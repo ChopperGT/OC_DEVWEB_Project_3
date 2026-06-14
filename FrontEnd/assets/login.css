@@ -1,0 +1,118 @@
+body {
+    line-height: 1;
+    background-color: #FFFEF8;
+    font-family: 'Work Sans';
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.mainContainer {
+    max-width: 1440px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;  /* centre le wrapper horizontalement */
+    flex: 1;         /* remplace le flex:1 du main pour pousser le footer */
+}
+
+/* Header Body */
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0
+}
+
+h1{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Syne';
+    font-size: 22px;
+    font-weight: 800;
+    color: #B1663C
+}
+h1 > span {
+    font-family: 'Work Sans';
+    margin-top: 5px;
+    font-size:10px;
+    letter-spacing: 0.1em;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 30px;
+}
+nav li {
+    padding: 0 10px;
+    font-size: 1.2em;
+}
+nav li img {
+    width: 20px;
+    height: 20px;
+}
+li:hover {
+    color: #B1663C;
+}
+/* Login */
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+.login h2{
+    font-family: 'Syne';
+    font-weight: 700;
+    font-size: 30px;
+    color: #1D6154;
+    margin-bottom: 40px;
+}
+.login label {
+    display: block;
+    width: 379px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.login input {
+    width: 379px;
+    height: 51px;
+    border: transparent;
+    background-color: white;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.2));
+    margin-bottom: 20px;
+}
+.login button {
+    width: 200px;
+    height: 40px;
+    background-color: #1D6154;
+    color: white;
+    font-family: 'Syne';
+    font-size: 16px;
+    border: transparent;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.login p {
+    border-bottom: 1px solid #1D6154;
+}
+footer {
+    display: flex;
+    background-color: #ffffff;
+    height: 60px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0px;
+}
+footer p {
+    padding-right: 100px;
+}
+
+/* Login message */
+#error-message {
+    color: #d64545;
+    min-height: 20px;
+    margin-top: 10px;
+}
