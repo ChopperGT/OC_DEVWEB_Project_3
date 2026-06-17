@@ -85,6 +85,8 @@ li:hover {
     margin-bottom: 20px;
 }
 .login button {
+    display: block;
+    margin: 0 auto;
     width: 200px;
     height: 40px;
     background-color: #1D6154;
@@ -93,10 +95,11 @@ li:hover {
     font-size: 16px;
     border: transparent;
     border-radius: 50px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .login p {
     border-bottom: 1px solid #1D6154;
+    margin-top: 10px;
 }
 footer {
     display: flex;

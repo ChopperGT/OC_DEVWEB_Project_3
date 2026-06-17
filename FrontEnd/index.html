@@ -8,10 +8,17 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+	      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+	      crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="assets/index.css">
 	<script src="./indexModuleAndSystem.js" defer></script>
 </head>
 <body class="body">
+<div class="edition" id="editorOn" style="display: none;">
+	<i class="fa-regular fa-pen-to-square"></i>
+	<span>Mode édition</span>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -19,8 +26,8 @@
 			<li>projets</li>
 			<li>contact</li>
 			<li id="login"><a href="login.html">login</a></li>
-			<li id="logout" style="display: none;"><button type="button" id="logoutUser" class="buttonLogout">Logout</button></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li id="logout" style="display: none;"><button type="button" id="logoutUser" class="buttonLogout">logout</button></li>
+			<li><i class="fa-brands fa-instagram"></i></li>
 		</ul>
 	</nav>
 </header>
@@ -37,9 +44,29 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<header>
+			<h2>Mes Projets</h2>
+			<button type="button" id="modifyButton" class="modifyButton" style="display: none;"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+		</header>
+		<section id="modifyPage" class="modifyPage">
+			<div class="modifyPage-box">
+				<button type="button" id="closeModifyPage" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
+				<h3>Galerie photo</h3>
+				<div>Image</div>
+				<button type="button" id="addPictureButton" class="addPictureButton">Ajouter une photo</button>
+			</div>
+		</section>
+		<section id="addPicture" class="addPicture">
+			<div class="addPicture-box">
+				<button type="button" id="returnAddPicture" class="buttonReturnPage"><i class="fa-solid fa-arrow-left"></i></button>
+				<button type="button" id="closeAddPicture" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
+				<h3>Ajout photo</h3>
+				<div class="addPicture">
+				</div>
+			</div>
+		</section>
 		<form>
-			<ul class="boxButton">
+			<ul id="boxButtonFiltre" class="boxButton">
 				<button type="button" class="button tous">Tous</button>
 				<button type="button" class="button objets">Objets</button>
 				<button type="button" class="button appartements">Appartements</button>
