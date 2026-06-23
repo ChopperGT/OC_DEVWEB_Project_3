@@ -29,9 +29,14 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+HTML {
+	overflow-x: hidden
+}
 body {
 	line-height: 1;
 	background-color: #FFFEF8;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 ol, ul {
 	list-style: none;
@@ -58,7 +63,7 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0 130px
+	margin: 50px 0 130px;
 }
 header nav {
 	display: flex;
@@ -117,54 +122,64 @@ nav li {
 	border: none;
 	font-size: 16px;
 }
+.buttonLogout:hover {
+	color: #B1663C;
+	cursor: pointer;
+}
 .fa-instagram {
 	font-size: 20px;
 }
 li:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 nav li img {
 	width: 20px;
 	height: 20px;
 }
-#introduction {
+.introduction {
 	display: flex;
 	align-items: center;
 }
-#introduction figure {
+.introduction figure {
 	flex: 1
 }
-#introduction img {
+.introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
 
-#introduction article {
+.introduction article {
 	flex: 1
 }
-#introduction h2 {
+
+.introduction h2 {
 	margin-bottom: 1em;
 }
 
-#introduction p {
+.introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio header {
+.portfolio header {
 	align-items: center;
 	justify-content: center;
 	margin-top: 10em;
 	margin-bottom: 4em;
 	gap: 10px;
 }
-#portfolio header button {
+.portfolio header button {
 	background-color: transparent;
 	border: none;
 	margin-left: 10px;
 }
-#portfolio header button i {
+.portfolio header button i {
 	font-size: 14px;
 	margin-right: 10px;
+}
+.modifyButton:hover {
+	color: #B1663C;
+	cursor: pointer;
 }
 /* page de modification */
 .modifyPage {
@@ -204,7 +219,7 @@ nav li img {
 	font-size: 24px;
 	margin-bottom: 20px;
 }
-.addPictureButton {
+.pageAddPictureButton {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -232,7 +247,7 @@ nav li img {
 .addPicture.active {
 	display: flex;
 }
-.addPicture-box {
+.addPictureMainBox {
 	position: absolute;
 	justify-items: center;
 	top: 50%;
@@ -255,7 +270,66 @@ nav li img {
 	font-size: 24px;
 	margin-bottom: 20px;
 }
-/* button filtre */
+.addPictureBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 420px;
+	height: 169px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	row-gap: 10px;
+	margin-bottom: 20px;
+}
+.fa-image {
+	font-size: 76px;
+	color: #B9C5CC;
+}
+.addPictureButton {
+	font-family: 'Syne';
+	color: #306685;
+	background-color: #CBD6DC;
+	font-size: 14px;
+	border-radius: 60px;
+	border: none;
+	width: 173px;
+	height: 36px;
+}
+.addPictureBox p {
+	font-size: 10px;
+	font-family: 'Syne';
+}
+.addPictureMainBox h4{
+	font-size: 14px;
+	font-family: 'Work Sans';
+	margin-bottom: 10px;
+}
+.addPictureMainBox input {
+	width: 420px;
+	height: 51px;
+	border: transparent;
+	background-color: white;
+	filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.2));
+	margin-bottom: 20px;
+	font-size: 14px;
+	font-family: 'Work Sans';
+}
+
+.addPictureButtonConfirm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	color: white;
+	border: none;
+	background-color: #A7A7A7;
+	border-radius: 60px;
+	width: 237px;
+	height: 36px;
+}
+
+	/* button filtre */
 .boxButton {
 	display: flex;
 	justify-content: center;
@@ -325,6 +399,11 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#contact input:nth-child(7) {
+	max-width: 180px;
+	min-width: 100px;
+	width: 100%;
+}
 #contact label {
 	margin: 2em 0 1em 0;
 }
@@ -332,7 +411,6 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -343,13 +421,21 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+#contact input:hover {
+	cursor: pointer;
+}
 footer {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	padding-top: 20px;
+	text-align: center;
 	height: 60px;
-	background-color: white;
+	background-color: #ffffff;
 }
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
-

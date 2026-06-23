@@ -1,0 +1,45 @@
+/* Header */
+header {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+header nav{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+header nav ul {
+    display: flex;
+    width: 100%;
+    max-width: 768px;
+    min-width: 100px;
+    gap: clamp(10px, 5vw, 100px);
+    justify-content: space-between;
+}
+/* Introduction */
+.introduction {
+    flex-direction: column;
+    align-items: center;
+}
+.introduction figure {
+    margin-bottom: 20px;
+}
+.introduction h2 {
+    text-align: center;
+}
+
+/* Projet */
+.portfolio header {
+    margin-top: 60px;
+}
+.boxButton {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tous, .objets, .appartements, .hotel {
+    flex: 1 1 calc(50% - 10px);
+}

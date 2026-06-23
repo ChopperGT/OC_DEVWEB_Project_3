@@ -12,6 +12,7 @@
 	      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	      crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="assets/index.css">
+	<link rel="stylesheet" media="screen and (max-width: 768px)" href="assets/indexPhone.css">
 	<script src="./indexModuleAndSystem.js" defer></script>
 </head>
 <body class="body">
@@ -32,7 +33,7 @@
 	</nav>
 </header>
 <main>
-	<section id="introduction">
+	<section class="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
 		</figure>
@@ -43,7 +44,7 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
+	<section class="portfolio">
 		<header>
 			<h2>Mes Projets</h2>
 			<button type="button" id="modifyButton" class="modifyButton" style="display: none;"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
@@ -53,16 +54,32 @@
 				<button type="button" id="closeModifyPage" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Galerie photo</h3>
 				<div>Image</div>
-				<button type="button" id="addPictureButton" class="addPictureButton">Ajouter une photo</button>
+				<button type="button" id="pageAddPictureButton" class="pageAddPictureButton">Ajouter une photo</button>
 			</div>
 		</section>
 		<section id="addPicture" class="addPicture">
-			<div class="addPicture-box">
+			<div class="addPictureMainBox">
 				<button type="button" id="returnAddPicture" class="buttonReturnPage"><i class="fa-solid fa-arrow-left"></i></button>
 				<button type="button" id="closeAddPicture" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Ajout photo</h3>
-				<div class="addPicture">
+				<div class="addPictureBox">
+					<i class="fa-regular fa-image"></i>
+					<button type="button" id="addPictureButton" class="addPictureButton">+ Ajouter photo</button>
+					<p>jpg, png: 4mo max</p>
 				</div>
+				<form>
+					<h4>Titre</h4>
+					<input type="text" id="addPictureTitle" name="addPictureTitle">
+					<h4>Catégorie</h4>
+					<input list="addPictureCategory" id="addPictureCategoryChoice">
+					<i class="fa-solid fa-angle-down"></i>
+					<datalist id="addPictureCategory">
+						<option value="Objets">
+						<option value="Appartements">
+						<option value="Hotels & restaurants">
+					</datalist>
+				</form>
+				<button type="button" id="addPictureButtonConfirm" class="addPictureButtonConfirm">Valider</button>
 			</div>
 		</section>
 		<form>

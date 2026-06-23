@@ -1,5 +1,3 @@
-
-
 // Login //
 
 // Récupérer le token du localStorage
@@ -39,8 +37,8 @@ if (isUserLoggedIn()) {
     });
     //addPicture
     const addPicture = document.getElementById("addPicture");
-    const addPictureButton = document .getElementById("addPictureButton");
-    addPictureButton.addEventListener("click", () => {
+    const pageAddPictureButton = document .getElementById("pageAddPictureButton");
+    pageAddPictureButton.addEventListener("click", () => {
         addPicture.style.display = "block";
         modifyPage.style.display = "none";
     });
