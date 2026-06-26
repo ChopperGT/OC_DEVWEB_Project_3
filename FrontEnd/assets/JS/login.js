@@ -40,7 +40,7 @@ form.addEventListener("submit", async (event) => {
         localStorage.setItem("token", data.token);
 
         // Redirection en cas de succès
-        window.location.href = "./index.html";
+        window.location.href = "../../index.html";
     } catch (error) {
         // Erreur réseau (serveur éteint, CORS, etc.)
         errorMessage.textContent = "Erreur serveur, réessaie plus tard.";
