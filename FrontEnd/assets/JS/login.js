@@ -45,8 +45,5 @@ form.addEventListener("submit", async (event) => {
         // Erreur réseau (serveur éteint, CORS, etc.)
         errorMessage.textContent = "Erreur serveur, réessaie plus tard.";
         console.error(error);
-
-
     }
-
 });

@@ -13,9 +13,9 @@
 	      crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="assets/CSS/index.css">
 	<link rel="stylesheet" media="screen and (max-width: 768px)" href="assets/CSS/indexPhone.css">
-	<script src="assets/JS/indexModuleAndSystem.js" defer></script>
-	<script src="../Backend/models/porjectBuilder.js" defer></script>
-	<script src="assets/JS/multer.js" defer></script>
+	<script src="assets/JS/projectBuilder.js" type="module" defer></script>
+	<script src="assets/JS/indexModuleAndSystem.js" type="module" defer></script>
+	<script src="assets/JS/filtreProject.js" type="module" defer></script>
 
 </head>
 <body class="body">
@@ -56,7 +56,7 @@
 			<div class="modifyPage-box">
 				<button type="button" id="closeModifyPage" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Galerie photo</h3>
-				<div>Image</div>
+				<div class="galleryModify"></div>
 				<button type="button" id="pageAddPictureButton" class="pageAddPictureButton">Ajouter une photo</button>
 			</div>
 		</section>

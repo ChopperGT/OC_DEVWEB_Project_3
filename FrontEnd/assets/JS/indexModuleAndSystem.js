@@ -1,3 +1,5 @@
+export const modifyButton = document.getElementById("modifyButton");
+
 // Récupérer le token du localStorage
 function isUserLoggedIn() {
     const token = localStorage.getItem('token');
@@ -13,7 +15,7 @@ if (isUserLoggedIn()) {
     const logout = document.getElementById("logout");
     const logoutUserBtn = document.getElementById("logoutUser");
     const boxButtonFiltre = document.getElementById("boxButtonFiltre");
-    const modifyButton = document.getElementById("modifyButton");
+
     //Create function
     function displayLogged(){
         editorOn.style.display = "block";
@@ -39,10 +41,15 @@ if (isUserLoggedIn()) {
         const modifyPage = document.getElementById("modifyPage");
         const closeModifyPage = document.getElementById("closeModifyPage");
         const addPicture = document.getElementById("addPicture");
+
+
+
         //Function
 
         //Action
         modifyPage.style.display = "block";
+
+
         console.log('Page de modification ouverte');
         // Button
         closeModifyPage.addEventListener("click", () => {

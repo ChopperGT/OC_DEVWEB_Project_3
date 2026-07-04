@@ -232,6 +232,42 @@ nav li img {
 	height: 36px;
 	margin-bottom: 20px;
 }
+.pageAddPictureButton:hover {
+	cursor: pointer;
+}
+
+.galleryModify {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+	grid-row-gap: 20px;
+	margin-bottom: 50px;
+}
+.galleryModify figure {
+	position: relative;  /* ✅ Ajouter */
+	width: 76px;
+	height: 102px;
+}
+
+.galleryModify img {
+	width: 100%;
+	height: 100%;
+}
+.galleryModify button {
+	position: absolute;
+	background-color: black;
+	border: none;
+	width: 17px;
+	height: 17px;
+	top: 5px;
+	right: 5px;
+	font-size: 9px;
+	color: white;
+}
+.galleryModify button:hover {
+	cursor: pointer;
+}
+
 /* add picture */
 .addPicture {
 	display: none;
@@ -373,7 +409,7 @@ nav li img {
 
 .gallery img {
 	width: 100%;
-
+	height: 490px;
 }
 #contact {
 	width: 50%;
