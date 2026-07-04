@@ -16,7 +16,7 @@ if (isUserLoggedIn()) {
     const logoutUserBtn = document.getElementById("logoutUser");
     const boxButtonFiltre = document.getElementById("boxButtonFiltre");
 
-    //Create function
+    //Function
     function displayLogged(){
         editorOn.style.display = "block";
         login.style.display = "none";
@@ -42,9 +42,6 @@ if (isUserLoggedIn()) {
         const closeModifyPage = document.getElementById("closeModifyPage");
         const addPicture = document.getElementById("addPicture");
 
-
-
-        //Function
 
         //Action
         modifyPage.style.display = "block";

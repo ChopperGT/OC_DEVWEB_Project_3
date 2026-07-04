@@ -16,6 +16,7 @@
 	<script src="assets/JS/projectBuilder.js" type="module" defer></script>
 	<script src="assets/JS/indexModuleAndSystem.js" type="module" defer></script>
 	<script src="assets/JS/filtreProject.js" type="module" defer></script>
+	<script src="assets/JS/addProject.js" type="module" defer></script>
 
 </head>
 <body class="body">
@@ -67,7 +68,7 @@
 				<h3>Ajout photo</h3>
 				<div class="addPictureBox">
 					<i class="fa-regular fa-image"></i>
-					<button type="button" id="addPictureButton" class="addPictureButton">+ Ajouter photo</button>
+					<input type="file" accept=".png,.jpg,.jpeg,.webp" name="image" required id="addPictureButton" class="addPictureButton">+ Ajouter photo</button>
 					<p>jpg, png: 4mo max</p>
 				</div>
 				<form>
@@ -76,11 +77,11 @@
 					<h4>Catégorie</h4>
 					<input list="addPictureCategory" id="addPictureCategoryChoice">
 					<i class="fa-solid fa-angle-down"></i>
-					<datalist id="addPictureCategory">
-						<option value="Objets">
-						<option value="Appartements">
-						<option value="Hotels & restaurants">
-					</datalist>
+					<select id="addPictureCategory">
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hotels & restaurants</option>
+					</select>
 				</form>
 				<button type="button" id="addPictureButtonConfirm" class="addPictureButtonConfirm">Valider</button>
 			</div>

@@ -318,6 +318,10 @@ nav li img {
 	row-gap: 10px;
 	margin-bottom: 20px;
 }
+.addPictureBox img {
+	width: 129px;
+	 height: 169px;
+}
 .fa-image {
 	font-size: 76px;
 	color: #B9C5CC;
