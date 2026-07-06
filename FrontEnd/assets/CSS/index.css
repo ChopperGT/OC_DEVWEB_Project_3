@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+/* Multiple elements */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,6 +23,8 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -215,9 +217,19 @@ nav li img {
 	font-size: 20px;
 	margin-bottom: 10px;
 }
+.buttonClosePage:hover {
+	color: #B1663C;
+	cursor: pointer;
+}
 .modifyPage-box h3 {
 	font-size: 24px;
 	margin-bottom: 20px;
+}
+.border {
+	width: 100%;
+	border-top: 1px solid #B3B3B3;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .pageAddPictureButton {
 	display: flex;
@@ -248,10 +260,15 @@ nav li img {
 	width: 76px;
 	height: 102px;
 }
-
 .galleryModify img {
 	width: 100%;
 	height: 100%;
+}
+.borderModify {
+	width: 420px;
+	border-top: 1px solid #B3B3B3;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .galleryModify button {
 	position: absolute;
@@ -302,6 +319,10 @@ nav li img {
 	font-size: 24px;
 	margin-bottom: 10px;
 }
+.buttonReturnPage:hover {
+	color: #B1663C;
+	cursor: pointer;
+}
 .addPicture h3 {
 	font-size: 24px;
 	margin-bottom: 20px;
@@ -327,6 +348,14 @@ nav li img {
 	color: #B9C5CC;
 }
 .addPictureButton {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+.addPictureButtonCustom	{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-family: 'Syne';
 	color: #306685;
 	background-color: #CBD6DC;
@@ -336,16 +365,20 @@ nav li img {
 	width: 173px;
 	height: 36px;
 }
+.addPictureButtonCustom:hover {
+	cursor: pointer;
+}
 .addPictureBox p {
 	font-size: 10px;
 	font-family: 'Syne';
+	color: #444444;
 }
 .addPictureMainBox h4{
 	font-size: 14px;
 	font-family: 'Work Sans';
 	margin-bottom: 10px;
 }
-.addPictureMainBox input {
+.addPictureMainBox input, select {
 	width: 420px;
 	height: 51px;
 	border: transparent;
@@ -355,7 +388,9 @@ nav li img {
 	font-size: 14px;
 	font-family: 'Work Sans';
 }
-
+.addPictureMainBox select:hover {
+	cursor: pointer;
+}
 .addPictureButtonConfirm {
 	display: flex;
 	justify-content: center;
@@ -363,13 +398,25 @@ nav li img {
 	font-family: 'Syne';
 	color: white;
 	border: none;
-	background-color: #A7A7A7;
 	border-radius: 60px;
 	width: 237px;
 	height: 36px;
 }
+.addPictureButtonConfirm:disabled {
+	background-color: #A7A7A7;
+}
+.addPictureButtonConfirm:not(:disabled) {
+	background-color: #1D6154;
+}
+.addPictureButtonConfirm:disabled:hover {
+	cursor: not-allowed;
+}
+.addPictureButtonConfirm:not(:disabled):hover {
+	cursor: pointer;
+}
 
-	/* button filtre */
+
+/* button filtre */
 .boxButton {
 	display: flex;
 	justify-content: center;

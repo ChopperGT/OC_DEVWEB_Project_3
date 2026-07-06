@@ -31,7 +31,7 @@ async function addWork() {
     const newWork = await fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`)
         },
         body: formData;
     })
@@ -41,7 +41,7 @@ async function addWork() {
 }
 
 async function filterWorks(category) {
-    // RETOURNER LA LISTE DE PROJETS FILTRES
+    // RETOURNER LA LISTE DE )PROJETS FILTRES
 }
 
 async function displayWorksInMainPage(works) {

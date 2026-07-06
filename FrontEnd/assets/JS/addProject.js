@@ -1,34 +1,39 @@
-const API_URL = 'http://localhost:5678';
 import {loadProjects} from "./projectBuilder.js";
+const API_URL = 'http://localhost:5678';
+const addPictureButton = document.getElementById("addPictureButton");
+let inputFile = false;
+const inputTitle = document.getElementById("addPictureTitle");
+const inputCategory = document.getElementById("addPictureCategory");
+const addPictureButtonConfirm = document.getElementById("addPictureButtonConfirm");
 
 
 async function addWork(addPictureButton) {
     const formData = new FormData();
-    // AJOUTER LES DONNEES DANS LE FORMDATA
     formData.append("image", addPictureButton.files[0]);
     formData.append("title", document.getElementById("addPictureTitle").value);
     formData.append("category", document.getElementById("addPictureCategory").value);
     const token = localStorage.getItem('token')
-    const newWork = await fetch("http://localhost:5678/api/works", {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${token}`
-        },
-        body: formData
-    })
+        try {
+            const newWork = await fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formData
+            });
+        }
+        catch (error) {
+        console.error(error);
+        }
     loadProjects();
 }
 
 
 function buttonPictureConfirm() {
-    const addPictureButtonConfirm = document.querySelector(".addPictureButtonConfirm");
-    const addPictureButton = document.getElementById("addPictureButton");
     addPictureButtonConfirm.addEventListener("click", () => {
         addWork(addPictureButton);
     })
 }
-
-
 
 function checkPicture() {
     const addPictureButton = document.getElementById("addPictureButton");
@@ -55,10 +60,13 @@ function verifyPicture(addPictureButton){
         console.log("File is allowed");
         if (maxSize >= addPictureButton.files[0].size) {
             console.log("File is not depassing the size limit");
+            inputFile = true;
+            updateButton();
             return true;
         }
         else {
             console.log("File is depassing the size limit");
+            addPictureButton.value = "";
             return false;
         }
     }
@@ -79,6 +87,21 @@ function viewPictureChoice(addPictureButton) {
     addPictureBox.appendChild(img);
 }
 
+function verifyButtonValidateProject() {
+    // Écouter les changements sur les 3 inputs
+    inputTitle.addEventListener("change", updateButton);
+    inputCategory.addEventListener("change", updateButton);
+}
 
+function updateButton() {
+    if (inputFile === true && inputTitle.value.trim() && inputCategory.value) {
+        addPictureButtonConfirm.disabled = false;
+        console.log("Button enabled");
+    } else {
+        addPictureButtonConfirm.disabled = true;
+    }
+}
+
+verifyButtonValidateProject()
 checkPicture();
 buttonPictureConfirm();

@@ -58,6 +58,7 @@
 				<button type="button" id="closeModifyPage" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Galerie photo</h3>
 				<div class="galleryModify"></div>
+				<hr class="borderModify">
 				<button type="button" id="pageAddPictureButton" class="pageAddPictureButton">Ajouter une photo</button>
 			</div>
 		</section>
@@ -68,22 +69,23 @@
 				<h3>Ajout photo</h3>
 				<div class="addPictureBox">
 					<i class="fa-regular fa-image"></i>
-					<input type="file" accept=".png,.jpg,.jpeg,.webp" name="image" required id="addPictureButton" class="addPictureButton">+ Ajouter photo</button>
+					<input type="file" accept=".png,.jpg,.jpeg,.webp" name="image" required id="addPictureButton" class="addPictureButton">
+					<label for="addPictureButton" class="addPictureButtonCustom">+ Ajouter photo</label>
 					<p>jpg, png: 4mo max</p>
 				</div>
 				<form>
 					<h4>Titre</h4>
 					<input type="text" id="addPictureTitle" name="addPictureTitle">
 					<h4>Catégorie</h4>
-					<input list="addPictureCategory" id="addPictureCategoryChoice">
-					<i class="fa-solid fa-angle-down"></i>
 					<select id="addPictureCategory">
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="3">Hotels & restaurants</option>
 					</select>
+					<hr class="border">
 				</form>
-				<button type="button" id="addPictureButtonConfirm" class="addPictureButtonConfirm">Valider</button>
+
+				<button type="button" id="addPictureButtonConfirm" class="addPictureButtonConfirm" disabled>Valider</button>
 			</div>
 		</section>
 		<form>
