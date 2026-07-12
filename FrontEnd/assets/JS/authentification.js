@@ -1,49 +1,44 @@
-// login
-const form = document.querySelector("#loginForm");
-const emailInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const errorMessage = document.querySelector("#loginError");
+import {apiLogin} from "./module/callAPI.js";
+const formLogin = document.querySelector("#loginForm");
 
-form.addEventListener("submit", async (event) => {
-    event.preventDefault(); // Empêche le rechargement de la page
+function loginUser(){
+    const form = document.querySelector("#loginForm");
+    const emailInput = document.querySelector("#username");
+    const passwordInput = document.querySelector("#password");
+    const errorMessage = document.querySelector("#loginError");
 
-    // Nettoie l'ancien message d'erreur
-    errorMessage.textContent = "";
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Empêche le rechargement de la page
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+        // Nettoie l'ancien message d'erreur
+        errorMessage.textContent = "";
 
-    // Vérification simple côté front
-    if (!email || !password) {
-        errorMessage.textContent = "Veuillez remplir tous les champs.";
-        return;
-    }
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
 
-    try {
-        const response = await fetch("http://localhost:5678/api/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email, password })
-        });
-
-        // Si l'API renvoie une erreur HTTP (401, 404...)
-        if (!response.ok) {
-            errorMessage.textContent = "Email ou mot de passe incorrect.";
+        // Vérification simple côté front
+        if (!email || !password) {
+            errorMessage.textContent = "Veuillez remplir tous les champs.";
             return;
         }
+        else {
+            const data = await apiLogin(email, password);
+            localStorage.setItem("token", data.token);
 
-        const data = await response.json();
+            // Redirection en cas de succès
+            window.location.href = new URL("index.html", window.location.href).href;
+        }
+    });
+}
 
-        // On stocke le token pour les futures requêtes protégées
-        localStorage.setItem("token", data.token);
+export function logoutUser() {
+    localStorage.removeItem('token');
+    window.location.href = new URL("index.html", window.location.href).href;
+    console.log('User logged out');
+}
 
-        // Redirection en cas de succès
-        window.location.href = "../../index.html";
-    } catch (error) {
-        // Erreur réseau (serveur éteint, CORS, etc.)
-        errorMessage.textContent = "Erreur serveur, réessaie plus tard.";
-        console.error(error);
-    }
-});
+if (formLogin) {
+    loginUser();
+} else {
+    console.info("Form to login not found")
+}

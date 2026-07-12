@@ -13,10 +13,7 @@
 	      crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="assets/CSS/index.css">
 	<link rel="stylesheet" media="screen and (max-width: 768px)" href="assets/CSS/indexPhone.css">
-	<script src="assets/JS/projectBuilder.js" type="module" defer></script>
-	<script src="assets/JS/indexModuleAndSystem.js" type="module" defer></script>
-	<script src="assets/JS/filtreProject.js" type="module" defer></script>
-	<script src="assets/JS/addProject.js" type="module" defer></script>
+	<script src="assets/JS/index.js" type="module" defer></script>
 
 </head>
 <body class="body">
@@ -53,7 +50,7 @@
 			<h2>Mes Projets</h2>
 			<button type="button" id="modifyButton" class="modifyButton" style="display: none;"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 		</header>
-		<section id="modifyPage" class="modifyPage">
+		<dialog id="modifyPage" class="modifyPage">
 			<div class="modifyPage-box">
 				<button type="button" id="closeModifyPage" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Galerie photo</h3>
@@ -61,9 +58,9 @@
 				<hr class="borderModify">
 				<button type="button" id="pageAddPictureButton" class="pageAddPictureButton">Ajouter une photo</button>
 			</div>
-		</section>
-		<section id="addPicture" class="addPicture">
-			<div class="addPictureMainBox">
+		</dialog>
+		<dialog id="addPicture" class="addPicture">
+			<form class="addPictureMainBox">
 				<button type="button" id="returnAddPicture" class="buttonReturnPage"><i class="fa-solid fa-arrow-left"></i></button>
 				<button type="button" id="closeAddPicture" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
 				<h3>Ajout photo</h3>
@@ -73,7 +70,7 @@
 					<label for="addPictureButton" class="addPictureButtonCustom">+ Ajouter photo</label>
 					<p>jpg, png: 4mo max</p>
 				</div>
-				<form>
+				<div>
 					<h4>Titre</h4>
 					<input type="text" id="addPictureTitle" name="addPictureTitle">
 					<h4>Catégorie</h4>
@@ -83,11 +80,11 @@
 						<option value="3">Hotels & restaurants</option>
 					</select>
 					<hr class="border">
-				</form>
+				</div>
 
 				<button type="button" id="addPictureButtonConfirm" class="addPictureButtonConfirm" disabled>Valider</button>
-			</div>
-		</section>
+			</form>
+		</dialog>
 		<form>
 			<ul id="boxButtonFiltre" class="boxButton">
 				<button type="button" class="button tous">Tous</button>
@@ -120,5 +117,15 @@
 		</ul>
 	</nav>
 </footer>
+<!-- Modal Error -->
+<dialog id="errorModal" class="errorModal" display="none">
+	<div class="errorModal-box">
+		<h2>Erreur</h2>
+		<button type="button" id="closeErrorModal" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
+		<h3 id="errorModalTitle"></h3>
+		<p id="errorModalMessage"></p>
+		<button type="button" id="closeErrorModalConfirm" class="buttonClosePageConfirm">OK</button>
+	</div>
+</dialog>
 </body>
 </html>

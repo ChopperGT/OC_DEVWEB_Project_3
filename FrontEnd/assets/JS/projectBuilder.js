@@ -1,9 +1,9 @@
 // ========== AFFICHAGE DE LA GALERIE DEPUIS LE BACKEND ==========
 
-const API_URL = 'http://localhost:5678';
 
 let modalGallery = false;
 import { modifyButton } from "./indexModuleAndSystem.js";
+import {apiDeleteWork, apiWork} from "./module/callAPI.js";
 
 
 
@@ -55,11 +55,7 @@ export function displayProjects(projects) {
 // Fonction pour récupérer et afficher les projets
 export async function loadProjects() {
     // Récupérer les projets depuis l'API
-    const response = await fetch(`${API_URL}/api/works`);
-    const projects = await response.json();
-
-
-
+    const projects = await apiWork();  // ✅ Récupérer et assigner le résultat
     // Afficher les projets dans la galerie
     displayProjects(projects);
 }
@@ -76,14 +72,7 @@ async function createButtonDelete(buttonDelete, project) {
     buttonDelete.innerHTML = "<i class=\"fa-regular fa-trash-can\"></i>";
 
     buttonDelete.addEventListener("click", async () => {
-        const token = localStorage.getItem('token');
-
-        const response = await fetch(`${API_URL}/api/works/${project.id}`, {
-            method: "DELETE",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            }
-        });
+        await apiDeleteWork(buttonDelete.id);
         modalGallery = true;
         loadProjects();
     });

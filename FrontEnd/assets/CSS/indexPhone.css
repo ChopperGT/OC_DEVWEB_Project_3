@@ -43,3 +43,7 @@ header nav ul {
 .tous, .objets, .appartements, .hotel {
     flex: 1 1 calc(50% - 10px);
 }
+.gallery {
+    grid-row-gap: 50px;
+    font-size: 12px;
+}

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/CSS/login.css">
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="assets/CSS/loginPhone.css">
-    <script src="assets/JS/authentification.js" type="module" defer></script>
+    <script src="assets/JS/login.js" type="module" defer></script>
     <title>Title</title>
 </head>
 <body>
@@ -50,5 +50,15 @@
         </ul>
     </nav>
 </footer>
+<!-- Modal Error -->
+<dialog id="errorModal" class="errorModal" display="none">
+    <div class="errorModal-box">
+        <h2>Erreur</h2>
+        <button type="button" id="closeErrorModal" class="buttonClosePage"><i class="fa-solid fa-xmark"></i></button>
+        <h3 id="errorModalTitle"></h3>
+        <p id="errorModalMessage"></p>
+        <button type="button" id="closeErrorModalConfirm" class="buttonClosePageConfirm">OK</button>
+    </div>
+</dialog>
 </body>
 </html>

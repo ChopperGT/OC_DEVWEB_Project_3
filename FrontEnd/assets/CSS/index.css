@@ -460,7 +460,9 @@ nav li img {
 
 .gallery img {
 	width: 100%;
-	height: 490px;
+	height: 100%;
+	max-height: 490px;
+	min-height: 120px;
 }
 #contact {
 	width: 50%;
@@ -525,4 +527,64 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+/* Error Modal */
+.errorModal[open] {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.errorModal-box {
+	position: absolute;
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	width: 400px;
+	text-align: center;
+}
+
+.errorModal-box h2 {
+	margin: 0px;
+}
+.buttonClosePage {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: transparent;
+	border: none;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.buttonClosePage:hover {
+	cursor: pointer;
+	color: #B1663C;
+}
+.errorModal-box h3 {
+	font-size: 18px;
+	margin-bottom: 10px;
+	color: #B1663C;
+}
+
+.errorModal-box p {
+	margin-bottom: 20px;
+	color: #666;
+}
+
+.buttonClosePageConfirm {
+	background-color: #1D6154;
+	color: white;
+	border: none;
+	padding: 10px 30px;
+	border-radius: 60px;
+	cursor: pointer;
+	font-family: 'Syne';
 }
