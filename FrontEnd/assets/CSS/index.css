@@ -440,6 +440,11 @@ nav li img {
 	color: white;
 	cursor: pointer;
 }
+.filtre.active {
+	background-color: #1D6154;
+	color: white;
+}
+
 .tous, .objets {
 	width: 100px;
 }

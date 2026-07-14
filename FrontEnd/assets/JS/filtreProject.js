@@ -1,22 +1,14 @@
 import {displayProjects, loadProjects} from "./projectBuilder.js";
+import {apiWork} from "./module/callAPI.js";
+
 const tousButton = document.querySelector(".tous");
-const objetsButton = document.querySelector(".objets");
-const appartementsButton = document.querySelector(".appartements");
-const hotelButton = document.querySelector(".hotel");
-
-
-
-async function readAllProjects() {
-    const response = await fetch(`http://localhost:5678/api/works`);
-    return await response.json();
-}
-
+let filtre = document.querySelectorAll(".filtre");
 
 
 // Fonction pour filtrer par catégorie
 async function filterByCategory(categoryId) {
-    const allProjects = await readAllProjects();
-    const filtered = allProjects.filter(project => project.categoryId === categoryId);
+    const allProjects = await apiWork();
+    const filtered = allProjects.filter(project => project.categoryId == categoryId);
     displayProjects(filtered);
 }
 
@@ -25,18 +17,13 @@ tousButton.addEventListener("click", () => {
     console.log("Filtre Tous appliqué");
 })
 
-// Bouton Objets
-objetsButton.addEventListener("click", () => {
-    filterByCategory(1); // 1 = Objets
-    console.log("Filtre Objets appliqué");
-});
-
-appartementsButton.addEventListener("click", () => {
-    filterByCategory(2); // 1 = Objets
-    console.log("Filtre Appartements appliqué");
-});
-
-hotelButton.addEventListener("click", () => {
-    filterByCategory(3); // 1 = Objets
-    console.log("Filtre Hotels & restaurants appliqué");
+filtre.forEach(button => {
+    button.addEventListener("click", e => {
+        if (e.target.matches("filtre")) return;
+        document.querySelectorAll(".filtre").forEach(el => el.classList.remove("active"));
+        e.target.classList.add("active");
+        const categoryId = e.target.dataset.category;
+        filterByCategory(categoryId);
+        console.log(`Projet filtré pour: ${e.target.textContent}`);
+    });
 });

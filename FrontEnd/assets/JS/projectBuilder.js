@@ -1,6 +1,3 @@
-// ========== AFFICHAGE DE LA GALERIE DEPUIS LE BACKEND ==========
-
-
 let modalGallery = false;
 import { modifyButton } from "./indexModuleAndSystem.js";
 import {apiDeleteWork, apiWork} from "./module/callAPI.js";
@@ -9,7 +6,7 @@ import {apiDeleteWork, apiWork} from "./module/callAPI.js";
 
 // Fonction pour afficher les projets dans le DOM
 export function displayProjects(projects) {
-    if (modalGallery === true) {
+    if (localStorage.getItem('Token') === 'true') {
         const galleryModify = document.querySelector('.galleryModify');
         galleryModify.innerHTML = '';
 
@@ -32,25 +29,22 @@ export function displayProjects(projects) {
         modalGallery = false;
         console.log('✅ Galerie du modal affichée avec', projects.length, 'projets');
     }
-    else {
-        const gallery = document.querySelector('.gallery');
+    const gallery = document.querySelector('.gallery');
 
-        gallery.innerHTML = '';
-        // Créer une figure pour chaque projet
-        projects.forEach(project => {
-            const figure = document.createElement('figure');
-            const img = document.createElement('img');
-            const figcaption = document.createElement('figcaption');
-            img.src = project.imageUrl;
-            img.alt = project.title;
-
-            figcaption.textContent = project.title;
-            figure.appendChild(img);
-            figure.appendChild(figcaption);
-            gallery.appendChild(figure);
-        });
-        console.log('✅ Galerie affichée avec', projects.length, 'projets');
-    }
+    gallery.innerHTML = '';
+    // Créer une figure pour chaque projet
+    projects.forEach(project => {
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        const figcaption = document.createElement('figcaption');
+        img.src = project.imageUrl;
+        img.alt = project.title;
+        figcaption.textContent = project.title;
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+        gallery.appendChild(figure);
+    });
+    console.log('✅ Galerie affichée avec', projects.length, 'projets');
 }
 // Fonction pour récupérer et afficher les projets
 export async function loadProjects() {
@@ -60,12 +54,7 @@ export async function loadProjects() {
     displayProjects(projects);
 }
 
-function loadProjectModal() {
-    modifyButton.addEventListener("click", () => {
-        modalGallery = true;
-        loadProjects();
-    })
-}
+
 async function createButtonDelete(buttonDelete, project) {
     buttonDelete.id = project.id;
     buttonDelete.type = "button";
@@ -73,7 +62,6 @@ async function createButtonDelete(buttonDelete, project) {
 
     buttonDelete.addEventListener("click", async () => {
         await apiDeleteWork(buttonDelete.id);
-        modalGallery = true;
         loadProjects();
     });
 }
@@ -88,5 +76,5 @@ function buttonPictureDelete(buttonPictureId) {
 
 // Charger les projets au chargement de la page
 loadProjects();
-loadProjectModal();
+
 

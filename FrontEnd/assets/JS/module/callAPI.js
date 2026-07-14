@@ -82,6 +82,43 @@ export async function apiLogin(email, password) {
     }
 }
 
+//Call API Category
+export async function apiCategory() {
+    try {
+        console.info("Call API")
+        response = await fetch(`${API_URL}/api/categories`);
+        if (response.status === 400) {
+            console.error("400 - Bad Request");
+            const titleError = "Erreur de requête";
+            const messageError = "La catégorie n'existe pas";
+            modalError(titleError,    messageError);
+            return null
+        }
+        if (response.status === 401) {
+            console.error("401 - Unauthorized");
+            const titleError = "Non autorisé"
+            const messageError = "Vous n'êtes pas autorisé à accéder à cette ressource";
+            modalError(titleError, messageError);
+            return null
+        }
+        if (response.status === 404) {
+            console.error("404 - API not found");
+            const titleError = "Identifiant incorrect";
+            const messageError = "L'email ou le mot de passe est incorrect";
+            modalError(titleError, messageError);
+            return null
+        }
+        const categoryId = await response.json();
+        console.info(" API call success");
+        return categoryId;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+
 //Call API Delete Work
 export async function apiDeleteWork(id) {
     try {
