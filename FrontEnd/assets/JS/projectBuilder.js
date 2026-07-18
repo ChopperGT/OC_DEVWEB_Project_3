@@ -1,12 +1,10 @@
-let modalGallery = false;
-import { modifyButton } from "./indexModuleAndSystem.js";
 import {apiDeleteWork, apiWork} from "./module/callAPI.js";
 
 
 
 // Fonction pour afficher les projets dans le DOM
 export function displayProjects(projects) {
-    if (localStorage.getItem('Token') === 'true') {
+    if (localStorage.getItem('token') !== null) {
         const galleryModify = document.querySelector('.galleryModify');
         galleryModify.innerHTML = '';
 
@@ -26,8 +24,7 @@ export function displayProjects(projects) {
             createButtonDelete(buttonDelete, project);
 
         });
-        modalGallery = false;
-        console.log('✅ Galerie du modal affichée avec', projects.length, 'projets');
+        console.info('✅ Galerie du modal affichée avec', projects.length, 'projets');
     }
     const gallery = document.querySelector('.gallery');
 
@@ -44,7 +41,7 @@ export function displayProjects(projects) {
         figure.appendChild(figcaption);
         gallery.appendChild(figure);
     });
-    console.log('✅ Galerie affichée avec', projects.length, 'projets');
+    console.info('✅ Galerie affichée avec', projects.length, 'projets');
 }
 // Fonction pour récupérer et afficher les projets
 export async function loadProjects() {
@@ -66,13 +63,6 @@ async function createButtonDelete(buttonDelete, project) {
     });
 }
 
-
-
-function buttonPictureDelete(buttonPictureId) {
-    buttonPictureId.addEventListener("click", () => {
-        console.log(buttonPictureId.id);
-    });
-}
 
 // Charger les projets au chargement de la page
 loadProjects();

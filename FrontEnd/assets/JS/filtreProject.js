@@ -12,10 +12,7 @@ async function filterByCategory(categoryId) {
     displayProjects(filtered);
 }
 
-tousButton.addEventListener("click", () => {
-    loadProjects();
-    console.log("Filtre Tous appliqué");
-})
+
 
 filtre.forEach(button => {
     button.addEventListener("click", e => {
@@ -23,7 +20,12 @@ filtre.forEach(button => {
         document.querySelectorAll(".filtre").forEach(el => el.classList.remove("active"));
         e.target.classList.add("active");
         const categoryId = e.target.dataset.category;
-        filterByCategory(categoryId);
-        console.log(`Projet filtré pour: ${e.target.textContent}`);
+        if (categoryId === undefined) {
+            loadProjects();
+        }
+        else {
+            filterByCategory(categoryId);
+        }
+        console.info(`Projet filtré pour: ${e.target.textContent}`);
     });
 });

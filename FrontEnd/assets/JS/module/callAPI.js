@@ -1,9 +1,10 @@
 const API_URL = 'http://localhost:5678';
-let response;
-let projects;
+
 //Call API Works
 export async function apiWork() {
     try {
+        let response;
+        let projects;
         console.info("Call API")
         response = await fetch(`${API_URL}/api/works`);
         console.log("STATUS REÇU:", response.status);
@@ -40,6 +41,7 @@ export async function apiWork() {
 
 //Call API Login
 export async function apiLogin(email, password) {
+    let response;
     try {
         console.info("Call API")
         response = await fetch(`${API_URL}/api/users/login`, {
@@ -84,6 +86,7 @@ export async function apiLogin(email, password) {
 
 //Call API Category
 export async function apiCategory() {
+    let response;
     try {
         console.info("Call API")
         response = await fetch(`${API_URL}/api/categories`);
@@ -119,8 +122,52 @@ export async function apiCategory() {
 }
 
 
+//Call API Add Work
+export async function apiAddWork(formData) {
+    let response;
+    try {
+        const token = localStorage.getItem('token');
+        console.info("Call API")
+        response = await fetch(`${API_URL}/api/works`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+            body: formData
+        });
+
+        if (response.status === 400) {
+            console.error("400 - Bad Request");
+            const titleError = "Erreur de saisie";
+            const messageError = "Les éléments ne sont pas remplis correctement";
+            modalError(titleError,    messageError);
+            return null
+        }
+        if (response.status === 401) {
+            console.error("401 - Unauthorized");
+            const titleError = "Non autorisé"
+            const messageError = "Vous n'êtes pas autorisé à accéder à cette ressource";
+            modalError(titleError, messageError);
+            return null
+        }
+        if (response.status === 404) {
+            console.error("404 - API not found");
+            const titleError = "Element introuvable";
+            const messageError = "L'élément que vous recherchez n'existe pas";
+            modalError(titleError, messageError);
+            return null
+        }
+        console.info(" API call success");
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 //Call API Delete Work
 export async function apiDeleteWork(id) {
+    let response;
     try {
         const token = localStorage.getItem('token');
         console.info("Call API")
@@ -159,6 +206,7 @@ export async function apiDeleteWork(id) {
         return null;
     }
 }
+
 
 function modalError(titleError, messageError) {
     const errorModal = document.getElementById("errorModal");

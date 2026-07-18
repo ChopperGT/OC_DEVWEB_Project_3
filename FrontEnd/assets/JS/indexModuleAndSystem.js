@@ -1,37 +1,21 @@
 export const modifyButton = document.getElementById("modifyButton");
 import {logoutUser} from "./authentification.js";
 
+
 // Récupérer le token du localStorage
 function isUserLoggedIn() {
     const token = localStorage.getItem('token');
-    return token !== null; // true si connecté, false sinon
+    return token !== null;
 }
-function rebornButtonAddPicture() {
-    const addPictureBox = document.querySelector(".addPictureBox");
-    const iconAddPicture = document.createElement("i");
-    const inputAddPicture = document.createElement("input");
-    const labelAddPicture = document.createElement("label");
-    const textAddPicture = document.createElement("p");
-    const addPictureButton = document.getElementById("addPictureButton");
-    localStorage.getItem('image');
-    console.log(localStorage.getItem('image'));
-    localStorage.removeItem('image');
-    iconAddPicture.classList = ("fa-solid", "fa-image");
-    iconAddPicture.classList.add("fa-solid", "fa-image");
-    inputAddPicture.type = "file";
-    inputAddPicture.accept = "image/png, image/jpeg,image/jpg, image/webp";
-    inputAddPicture.name = "image";
-    inputAddPicture.id = "addPictureButton";
-    inputAddPicture.classList= ("addPictureButton");
-    labelAddPicture.htmlFor = "addPictureButton";
-    labelAddPicture.classList = ("addPictureButtonCustom");
-    labelAddPicture.textContent = "+ Ajouter photo";
-    textAddPicture.textContent = "jpg, png: 4mo max";
-    addPictureBox.innerHTML = '';
-    addPictureBox.appendChild(iconAddPicture);
-    addPictureBox.appendChild(inputAddPicture);
-    addPictureBox.appendChild(labelAddPicture);
-    addPictureBox.appendChild(textAddPicture);
+function rebornFormAddPicture(){
+    const form = document.querySelector(".addPictureMainBox");
+    const img = document.querySelector(".addPictureBox img");
+
+    form.querySelectorAll('*').forEach(child => {
+        child.classList.remove('hidden');
+    })
+    form.reset();
+    img.remove();
 }
 
 // Utiliser cette fonction
@@ -68,8 +52,6 @@ if (isUserLoggedIn()) {
 
         //Action
         modifyPage.style.display = "block";
-
-
         console.log('Page de modification ouverte');
         // Button
         closeModifyPage.addEventListener("click", () => {
@@ -92,15 +74,15 @@ if (isUserLoggedIn()) {
             // Button
             closeAddPicture.addEventListener("click", () => {
                 addPicture.style.display = "none";
-                rebornButtonAddPicture();
+                rebornFormAddPicture();
             });
             returnAddPicture.addEventListener("click", () => {
                 addPicture.style.display = "none";
+                rebornFormAddPicture();
                 modifyPage.style.display = "block";
             });
         });
     });
-
-} else {
+    } else {
     console.log('❌ L\'utilisateur n\'est pas connecté');
 }

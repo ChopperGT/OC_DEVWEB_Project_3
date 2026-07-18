@@ -1,5 +1,5 @@
 import {loadProjects} from "./projectBuilder.js";
-const API_URL = 'http://localhost:5678';
+import {apiAddWork} from "./module/callAPI.js";
 const addPictureButton = document.getElementById("addPictureButton");
 let inputFile = false;
 const inputTitle = document.getElementById("addPictureTitle");
@@ -12,19 +12,7 @@ async function addWork(addPictureButton) {
     formData.append("image", addPictureButton.files[0]);
     formData.append("title", document.getElementById("addPictureTitle").value);
     formData.append("category", document.getElementById("addPictureCategory").value);
-    const token = localStorage.getItem('token')
-        try {
-            const newWork = await fetch("http://localhost:5678/api/works", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                },
-                body: formData
-            });
-        }
-        catch (error) {
-        console.error(error);
-        }
+    await apiAddWork(formData);
     loadProjects();
 }
 
@@ -82,7 +70,9 @@ function viewPictureChoice(addPictureButton) {
     const pictureChoice = addPictureButton.files[0];
     const img = document.createElement("img");
 
-    addPictureBox.innerHTML ='';
+    addPictureBox.querySelectorAll('*').forEach(child => {
+        child.classList.add('hidden');
+    });
     img.src = URL.createObjectURL(pictureChoice);
     addPictureBox.appendChild(img);
 }

@@ -414,7 +414,9 @@ nav li img {
 .addPictureButtonConfirm:not(:disabled):hover {
 	cursor: pointer;
 }
-
+.hidden {
+	display: none;
+}
 
 /* button filtre */
 .boxButton {
