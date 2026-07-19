@@ -36,6 +36,7 @@ export function displayProjects(projects) {
         const figcaption = document.createElement('figcaption');
         img.src = project.imageUrl;
         img.alt = project.title;
+        img.dataset.id = project.category.id;
         figcaption.textContent = project.title;
         figure.appendChild(img);
         figure.appendChild(figcaption);

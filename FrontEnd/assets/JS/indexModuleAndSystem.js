@@ -1,12 +1,14 @@
-export const modifyButton = document.getElementById("modifyButton");
 import {logoutUser} from "./authentification.js";
+import {apiCategory} from "./module/callAPI.js";
 
+const modifyButton = document.getElementById("modifyButton");
 
 // Récupérer le token du localStorage
 function isUserLoggedIn() {
     const token = localStorage.getItem('token');
     return token !== null;
 }
+
 function rebornFormAddPicture(){
     const form = document.querySelector(".addPictureMainBox");
     const img = document.querySelector(".addPictureBox img");
@@ -15,8 +17,16 @@ function rebornFormAddPicture(){
         child.classList.remove('hidden');
     })
     form.reset();
-    img.remove();
+    if (img !== null){
+        img.remove();
+        console.info("Picture is deleted");
+    }
+    else {
+        console.info("No picture is detected");
+    }
 }
+
+
 
 // Utiliser cette fonction
 if (isUserLoggedIn()) {
@@ -37,9 +47,19 @@ if (isUserLoggedIn()) {
         boxButtonFiltre.style.display = "none";
         modifyButton.style.display = "block";
     }
-
+    async function createSelectCategory(){
+        const addPictureCategory = document.getElementById("addPictureCategory");
+        const allCategory = await apiCategory();
+        allCategory.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            addPictureCategory.appendChild(option);
+        })
+    }
     //Call function
     displayLogged();
+    createSelectCategory();
     logoutUserBtn.addEventListener("click", logoutUser);
 
     //Button no function
@@ -86,3 +106,4 @@ if (isUserLoggedIn()) {
     } else {
     console.log('❌ L\'utilisateur n\'est pas connecté');
 }
+
