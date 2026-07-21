@@ -29,6 +29,13 @@ export async function apiWork() {
             modalError(titleError, messageError);
             return null
         }
+        if (response.status >= 500) {
+            console.error("Server Error");
+            const titleError = response.status + " Erreur serveur";
+            const messageError = "Une erreur est survenue sur le serveur";
+            modalError(titleError, messageError);
+            return null
+        }
         projects = await response.json();
         console.info(" API call success");
         return projects;
@@ -74,6 +81,13 @@ export async function apiLogin(email, password) {
             modalError(titleError, messageError);
             return null
         }
+        if (response.status >= 500) {
+            console.error("Server Error");
+            const titleError = response.status + " Erreur serveur";
+            const messageError = "Une erreur est survenue sur le serveur";
+            modalError(titleError, messageError);
+            return null
+        }
         const data = await response.json();
         console.info(" API call success");
         return data;
@@ -106,8 +120,15 @@ export async function apiCategory() {
         }
         if (response.status === 404) {
             console.error("404 - API not found");
-            const titleError = "Identifiant incorrect";
-            const messageError = "L'email ou le mot de passe est incorrect";
+            const titleError = "Element introuvable";
+            const messageError = "Les catégories n'existent pas";
+            modalError(titleError, messageError);
+            return null
+        }
+        if (response.status >= 500) {
+            console.error("Server Error");
+            const titleError = response.status + " Erreur serveur";
+            const messageError = "Une erreur est survenue sur le serveur";
             modalError(titleError, messageError);
             return null
         }
@@ -157,6 +178,13 @@ export async function apiAddWork(formData) {
             modalError(titleError, messageError);
             return null
         }
+        if (response.status >= 500) {
+            console.error("Server Error");
+            const titleError = response.status + " Erreur serveur";
+            const messageError = "Une erreur est survenue sur le serveur";
+            modalError(titleError, messageError);
+            return null
+        }
         console.info(" API call success");
     }
     catch (error) {
@@ -196,6 +224,13 @@ export async function apiDeleteWork(id) {
             console.error("404 - API not found");
             const titleError = "Element introuvable";
             const messageError = "L'élément que vous recherchez n'existe pas";
+            modalError(titleError, messageError);
+            return null
+        }
+        if (response.status >= 500) {
+            console.error("Server Error");
+            const titleError = response.status + " Erreur serveur";
+            const messageError = "Une erreur est survenue sur le serveur";
             modalError(titleError, messageError);
             return null
         }

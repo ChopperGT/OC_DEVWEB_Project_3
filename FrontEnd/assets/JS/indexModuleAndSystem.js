@@ -60,9 +60,10 @@ if (isUserLoggedIn()) {
     //Call function
     displayLogged();
     createSelectCategory();
-    logoutUserBtn.addEventListener("click", logoutUser);
+
 
     //Button no function
+    logoutUserBtn.addEventListener("click", logoutUser);
     modifyButton.addEventListener("click", () => {
         //Variable
         const modifyPage = document.getElementById("modifyPage");

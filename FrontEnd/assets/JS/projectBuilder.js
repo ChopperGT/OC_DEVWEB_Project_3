@@ -45,12 +45,13 @@ export function displayProjects(projects) {
     console.info('✅ Galerie affichée avec', projects.length, 'projets');
 }
 // Fonction pour récupérer et afficher les projets
-export async function loadProjects() {
+export async function loadProjects(category) {
     // Récupérer les projets depuis l'API
     const projects = await apiWork();  // ✅ Récupérer et assigner le résultat
     // Afficher les projets dans la galerie
     displayProjects(projects);
 }
+
 
 
 async function createButtonDelete(buttonDelete, project) {

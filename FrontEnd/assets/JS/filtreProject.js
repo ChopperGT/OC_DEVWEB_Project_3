@@ -1,7 +1,6 @@
 import {displayProjects, loadProjects} from "./projectBuilder.js";
-import {apiCategory} from "./module/callAPI.js";
+import {apiCategory, apiWork} from "./module/callAPI.js";
 
-const tousButton = document.querySelector(".tous");
 
 
 
@@ -32,20 +31,17 @@ async function createButtonCategory(category) {
 async function buttonActiveFiltre(e) {
     document.querySelectorAll(".filtre").forEach(el => el.classList.remove("active"));
     e.target.classList.add("active");
+
     const categoryId = e.target.dataset.category;
     if (categoryId === '0') {
         loadProjects();
     } else {
-        await loadProjects();
-        const filteredProjects = document.querySelectorAll(`.gallery figure img[data-id="${categoryId}"]`);
-        const projectsToDisplay = Array.from(filteredProjects).map(img => {
-            return {
-                imageUrl: img.src,
-                title: img.alt,
-                category: {id: parseInt(img.dataset.id)}
-            };
-        });
-        displayProjects(projectsToDisplay);
+
+        const projects = await apiWork();
+        console.log(projects);
+        const filteredProjects = projects.filter(project => project.category.id.toString() === categoryId);
+        console.log(filteredProjects)
+        displayProjects(filteredProjects);
     }
     console.info(`Projet filtré pour: ${e.target.textContent}`);
 }
