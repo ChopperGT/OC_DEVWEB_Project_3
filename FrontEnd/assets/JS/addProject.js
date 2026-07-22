@@ -1,7 +1,9 @@
 import {loadProjects} from "./projectBuilder.js";
 import {apiAddWork} from "./module/callAPI.js";
-const addPictureButton = document.getElementById("addPictureButton");
+import {rebornFormAddPicture} from "./indexModuleAndSystem.js";
+
 let inputFile = false;
+const addPictureButton = document.getElementById("addPictureButton");
 const inputTitle = document.getElementById("addPictureTitle");
 const inputCategory = document.getElementById("addPictureCategory");
 const addPictureButtonConfirm = document.getElementById("addPictureButtonConfirm");
@@ -20,6 +22,10 @@ async function addWork(addPictureButton) {
 function buttonPictureConfirm() {
     addPictureButtonConfirm.addEventListener("click", () => {
         addWork(addPictureButton);
+        const addPicture = document.getElementById("addPicture");
+        addPicture.close();
+        rebornFormAddPicture();
+        verifyButtonValidateProject();
     })
 }
 

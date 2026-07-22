@@ -9,7 +9,7 @@ function isUserLoggedIn() {
     return token !== null;
 }
 
-function rebornFormAddPicture(){
+export function rebornFormAddPicture(){
     const form = document.querySelector(".addPictureMainBox");
     const img = document.querySelector(".addPictureBox img");
 
@@ -72,15 +72,15 @@ if (isUserLoggedIn()) {
         const pageAddPictureButton = document.getElementById("pageAddPictureButton");
 
         //Action
-        modifyPage.style.display = "block";
+        modifyPage.showModal();
         console.log('Page de modification ouverte');
         // Button
         closeModifyPage.addEventListener("click", () => {
-            modifyPage.style.display = "none";
+            modifyPage.close();
         });
         modifyPage.addEventListener('click', (e) => {
             if (e.target === modifyPage) {
-                modifyPage.style.display = "none";
+                modifyPage.close();
             }
         });
         pageAddPictureButton.addEventListener("click", () => {
@@ -89,18 +89,18 @@ if (isUserLoggedIn()) {
             const returnAddPicture = document.getElementById("returnAddPicture");
             //Action
             console.log('Page d\'ajout d\'image ouverte');
-            addPicture.style.display = "block";
-            modifyPage.style.display = "none";
+            addPicture.showModal();
+            modifyPage.close();
 
             // Button
             closeAddPicture.addEventListener("click", () => {
-                addPicture.style.display = "none";
+                addPicture.close();
                 rebornFormAddPicture();
             });
             returnAddPicture.addEventListener("click", () => {
-                addPicture.style.display = "none";
+                addPicture.close();
                 rebornFormAddPicture();
-                modifyPage.style.display = "block";
+                modifyPage.showModal();
             });
         });
     });
