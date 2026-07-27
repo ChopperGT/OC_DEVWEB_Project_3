@@ -42,7 +42,7 @@ export async function apiWork() {
     }
     catch (error) {
         console.error(error);
-        return null;
+        return "";
     }
 }
 
