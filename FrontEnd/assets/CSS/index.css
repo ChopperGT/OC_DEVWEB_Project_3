@@ -184,8 +184,7 @@ nav li img {
 	cursor: pointer;
 }
 /* page de modification */
-.modifyPage {
-	display: none;
+.modifyPage[open] {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -195,9 +194,7 @@ nav li img {
 	justify-content: center;
 	align-items: center;
 }
-.modifyPage.active {
-	display: flex;
-}
+
 .modifyPage-box {
 	position: absolute;
 	justify-items: center;
@@ -286,8 +283,7 @@ nav li img {
 }
 
 /* add picture */
-.addPicture {
-	display: none;
+.addPicture[open] {
 	position: fixed;
 	top: 0;
 	left: 0;
